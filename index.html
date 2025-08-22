@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsMyPass — Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/dd8c49730d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ===== Sticky Glass Navbar ===== -->
+  <header class="topbar" id="topbar">
+    <div class="nav-left">
+      <a href="#" class="brand">WhatsMyPass</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#why">Why WhatsMyPass?</a>
+        <a href="#support">Support Us</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#about">About Us</a>
+      </nav>
+    </div>
+
+    <div class="nav-right">
+      <a href="#pro" class="link subtle">Pro Version</a>
+      <a href="#signin" class="link">Sign in</a>
+      <a href="#signup" class="btn-pill">Sign up</a>
+
+      <!-- your original theme toggle (kept exactly) -->
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+        <em>Switch Theme</em>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Push content below fixed navbar -->
+  <main class="page">
+
+    <!-- ===== Password Generator Card ===== -->
+    <section class="container" id="generator">
+      <h2>Password Generator</h2>
+
+      <div class="result-container">
+        <textarea id="PasswordResult" aria-label="Generated password" readonly></textarea>
+
+        <!-- inline action buttons like LastPass -->
+        <div class="result-actions">
+          <button class="icon-btn" id="regenBtn" title="Regenerate" aria-label="Regenerate password">
+            <i class="fas fa-rotate-right"></i>
+          </button>
+          <button class="icon-btn" id="clipboardBtn" title="Copy" aria-label="Copy password">
+            <i class="far fa-clipboard"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- strength meter -->
+      <div class="strength-wrap" aria-live="polite">
+        <div class="strength-meter"><span id="strengthBar"></span></div>
+        <span id="strengthLabel" class="strength-label">Strength: —</span>
+      </div>
+
+      <!-- Settings -->
+      <div class="settings">
+        <div class="setting length-row">
+          <label for="Passwordlength">Password length</label>
+          <div class="len-controls">
+            <input type="range" id="lengthRange" min="4" max="40" value="12" />
+            <input type="number" id="Passwordlength" min="4" max="40" value="12" />
+          </div>
+        </div>
+
+        <!-- LastPass-like modes -->
+        <!-- <div class="modes">
+          <label class="radio"><input type="radio" name="mode" value="say"> Easy to say</label>
+          <label class="radio"><input type="radio" name="mode" value="read"> Easy to read</label>
+          <label class="radio"><input type="radio" name="mode" value="all" checked> All characters</label>
+        </div> -->
+
+        <!-- Your original checkboxes (kept) -->
+        <div class="setting"><label>Include uppercase letters</label><input type="checkbox" id="uppercase" checked /></div>
+        <div class="setting"><label>Include lowercase letters</label><input type="checkbox" id="lowercase" checked /></div>
+        <div class="setting"><label>Include numbers</label><input type="checkbox" id="numbers" checked /></div>
+        <div class="setting"><label>Include symbols</label><input type="checkbox" id="symbols" checked /></div>
+
+        <!-- extras kept from enhanced version -->
+        <div class="setting"><label>Avoid similar (0/O, 1/l)</label><input type="checkbox" id="avoidSimilar" /></div>
+        <div class="setting"><label>Include ambiguous (~ | _ [ ])</label><input type="checkbox" id="ambiguous" /></div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn btn-large" id="generateBtn"><i class="fas fa-key"></i> Generate</button>
+      </div>
+    </section>
+
+    <!-- ===== Fullscreen Why Section ===== -->
+    <section id="why" class="why full-screen">
+      <h2>Why WhatsMyPass?</h2>
+      <p class="lead">Take your security to the next level with features inspired by industry best practice.</p>
+
+      <div class="features-grid">
+        <article class="feature">
+          <div class="icon"><i class="fas fa-eye-slash"></i></div>
+          <h3>Zero-knowledge security</h3>
+          <p>Your data is kept secret — even from us — via a local-only encryption model.</p>
+          <a href="#encryption" class="link">Learn more about encryption</a>
+        </article>
+
+        <article class="feature">
+          <div class="icon"><i class="fas fa-satellite-dish"></i></div>
+          <h3>Be aware of digital threats</h3>
+          <p>Premium dark-web monitoring can alert you if your data appears in known breaches.</p>
+          <a href="#darkweb" class="link">Dark web monitoring</a>
+        </article>
+
+        <article class="feature">
+          <div class="icon"><i class="fas fa-user-shield"></i></div>
+          <h3>Nurture better habits</h3>
+          <p>Find weak or reused passwords and replace them with strong, unique ones.</p>
+          <a href="#dashboard" class="link">Security dashboard</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== User Satisfaction ===== -->
+    <section id="satisfaction" class="satisfaction">
+      <h2>User Satisfaction</h2>
+      <p class="lead">Rated <strong>4.8/5</strong> by <strong>2,431</strong> happy users.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span>5★</span><div class="bar"><i style="width:85%"></i></div><span>1,820</span>
+        </div>
+        <div class="stat">
+          <span>4★</span><div class="bar"><i style="width:10%"></i></div><span>243</span>
+        </div>
+        <div class="stat">
+          <span>3★</span><div class="bar"><i style="width:3%"></i></div><span>73</span>
+        </div>
+        <div class="stat">
+          <span>2★</span><div class="bar"><i style="width:1%"></i></div><span>24</span>
+        </div>
+        <div class="stat">
+          <span>1★</span><div class="bar"><i style="width:1%"></i></div><span>21</span>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <figure class="tcard">
+          <div class="avatar">AR</div>
+          <figcaption>
+            <strong>Arunima R.</strong> — Product Designer<br />
+            “Clean UI, great generator modes. Copy works perfectly on my iPhone.”
+          </figcaption>
+        </figure>
+
+        <figure class="tcard">
+          <div class="avatar">MK</div>
+          <figcaption>
+            <strong>Manas K.</strong> — Developer<br />
+            “Zero-knowledge approach + dark theme = chef’s kiss.”
+          </figcaption>
+        </figure>
+
+        <figure class="tcard">
+          <div class="avatar">SS</div>
+          <figcaption>
+            <strong>S. Sharma</strong> — Analyst<br />
+            “The sticky navbar and sections make it feel like a polished app.”
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Optional small placeholder sections for links -->
+    <section id="support" class="placeholder"><h2>Support Us</h2><p>Coming soon.</p></section>
+    <section id="contact" class="placeholder"><h2>Contact Us</h2><p>Mail: hello@whatsmypass.example</p></section>
+    <section id="about" class="placeholder"><h2>About Us</h2><p>We build simple, secure tools for everyone.</p></section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" id="pro">
+    <p>Created by <strong>Nilam Chakraborty</strong>. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
